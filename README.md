@@ -7,7 +7,7 @@ Typescript version of react-redux-starter-kit
 - Babel 6.3
 - React 0.14
 - Redux 3.0
-- React Router
+- React Router 1.0
 - Webpack 1.12
 - Karma 0.13
 - Mocha 2.2
