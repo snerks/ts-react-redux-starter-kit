@@ -28,4 +28,7 @@
 
 /// <reference path="require.d.ts" />
 /// <reference path="globals.d.ts" />
+/// <reference path="redux-devtools/redux-devtools.d.ts" />
+/// <reference path="redux-devtools-log-monitor/redux-devtools-log-monitor.d.ts" />
+/// <reference path="redux-devtools-dock-monitor/redux-devtools-dock-monitor.d.ts" />
 
