@@ -2,6 +2,19 @@
   "name": "ts-react-redux-starter-kit",
   "version": "1.0.0",
   "description": "Get started with Typescript, React, Redux, and React-Router!",
+  "keywords": [
+    "TypeScript",
+    "Babel",
+    "React",
+    "Redux",
+    "Router",
+    "Webpack",
+    "Karma",
+    "Mocha",
+    "Chai",
+    "Sinon",
+    "Istanbul"
+  ],
   "main": "index.js",
   "engines": {
     "node": ">=5.0.0",
