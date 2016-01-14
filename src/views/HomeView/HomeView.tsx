@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import { actions as counterActions } from '../../redux/modules/counter';
 
 // import classes from './HomeView.scss';
-import classes = require('./HomeView.scss');
+var classes = require('./HomeView.scss');
 
 export interface HomeViewProps extends React.Props<any> {
     counter: number;
@@ -28,6 +28,9 @@ export class HomeView extends React.Component<HomeViewProps, {}> {
   //  doubleAsync: React.PropTypes.func.isRequired,
   //  increment: React.PropTypes.func.isRequired
   // };
+  // constructor(props) {
+  //   super(props);
+  // }
 
   render(): JSX.Element {
     return (

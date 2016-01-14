@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "jsx": "react",
+        "noImplicitAny": false,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "noEmitOnError": false,
+        "moduleResolution": "classic",
+        "listFiles": true
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}

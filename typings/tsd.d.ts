@@ -1,4 +1,3 @@
-
 /// <reference path="react/react-addons-create-fragment.d.ts" />
 /// <reference path="react/react-addons-css-transition-group.d.ts" />
 /// <reference path="react/react-addons-linked-state-mixin.d.ts" />
@@ -22,7 +21,6 @@
 /// <reference path="chai/chai.d.ts" />
 /// <reference path="sinon/sinon.d.ts" />
 /// <reference path="sinon-chai/sinon-chai.d.ts" />
-/// <reference path="es6-promise/es6-promise.d.ts" />
 /// <reference path="chai-as-promised/chai-as-promised.d.ts" />
 /// <reference path="promises-a-plus/promises-a-plus.d.ts" />
 
