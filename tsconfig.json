@@ -3,7 +3,7 @@
         "target": "es6",
         "jsx": "react",
         "noImplicitAny": false,
-        "removeComments": true,
+        "removeComments": false,
         "preserveConstEnums": true,
         "noEmitOnError": false,
         "moduleResolution": "classic",

@@ -2,12 +2,15 @@
 
 import * as React from 'react';
 import * as TestUtils from 'react-addons-test-utils';
+
+// import { bindActionCreators } from 'redux';
+
 import { Badge, BadgeProps } from '../../../src/views/Badge/Badge';
 
 import * as chai from 'chai';
 const expect = chai.expect;
 
-// import * as Sinon from 'sinon';
+import * as Sinon from 'sinon';
 
 function shallowRender(component: React.ReactElement<any>): React.ReactElement<any> {
     'use strict';
@@ -30,35 +33,39 @@ function shallowRenderWithProps(props: BadgeProps): React.ReactElement<any> {
     return shallowRender(<Badge {...props} />);
 }
 
-// interface SpyContext {
-//    dispatch: Sinon.SinonSpy;
-//    doubleAsync: Sinon.SinonSpy;
-//    increment: Sinon.SinonSpy;
-// }
+ interface SpyContext {
+    dispatch: Sinon.SinonSpy;
+    doubleAsync: Sinon.SinonSpy;
+    increment: Sinon.SinonSpy;
+ }
 
 describe('(View) Badge', () => {
     let _component: React.ReactElement<any>;
     let _rendered: React.Component<any, any>;
     let _props: BadgeProps;
-    // let _spies: SpyContext;
+    let _spies: SpyContext;
 
     beforeEach(() => {
-        // _spies = {
-        //    dispatch: sinon.spy(),
-        //    doubleAsync: sinon.spy(),
-        //    increment: sinon.spy()
-        // };
+         _spies = {
+             dispatch: sinon.spy()
+             , doubleAsync: sinon.spy()
+             , increment: sinon.spy()
+         };
 
-        // const actionCreators: BadgeProps = {
-        //    counter: 0,
-        //    doubleAsync: _spies.doubleAsync,
-        //    increment: _spies.increment
-        // };
+         // const actionCreators: BadgeProps = {
+         //   counter: 0,
+         //   doubleAsync: _spies.doubleAsync,
+         //   increment: _spies.increment
+         // };
 
         // const boundActionCreators = bindActionCreators(actionCreators, _spies.dispatch);
 
         _props = {
-            value: 0,
+            counter: 0,
+            doubleAsync: _spies.doubleAsync
+            ,
+            // increment: boundActionCreators.increment
+            increment: _spies.increment
         };
 
         // _props = {
@@ -73,82 +80,91 @@ describe('(View) Badge', () => {
         _rendered = renderWithProps(_props);
     });
 
-    it('Should render as a <span>.', () => {
-        expect(_component.type).to.equal('span');
+    it('Should render as a <div>.', () => {
+        expect(_component.type).to.equal('div');
     });
 
-    // it('Should include an <h1> with welcome text.', () => {
-    //    const h1 = TestUtils.findRenderedDOMComponentWithTag(_rendered, 'h1');
+     it('Should include an <h1>', () => {
+        const h1 = TestUtils.findRenderedDOMComponentWithTag(_rendered, 'h1');
 
-    //    expect(h1).to.exist;
-    //    expect(h1.textContent).to.match(/React Redux Starter Kit - in Typescript/);
-    // });
+        expect(h1).to.exist;
+     });
 
-    // it('Should render with an <h2> that includes Sample Counter text.', () => {
-    //    const h2 = TestUtils.findRenderedDOMComponentWithTag(_rendered, 'h2');
+     it('Should include an <h1> with welcome text.', () => {
+         const h1 = TestUtils.findRenderedDOMComponentWithTag(_rendered, 'h1');
 
-    //    expect(h2).to.exist;
-    //    expect(h2.textContent).to.match(/Sample Counter/);
-    // });
+         expect(h1.textContent).to.match(/^React Redux Starter Kit - in Typescript$/);
+     });
 
-    // it('Should render props.counter at the end of the sample counter <h2>.', () => {
-    //    _props.counter = 5;
+     it('Should render with an <h2> that includes Sample Counter text.', () => {
+        const h2 = TestUtils.findRenderedDOMComponentWithTag(_rendered, 'h2');
 
-    //    const h2 = TestUtils.findRenderedDOMComponentWithTag(
-    //        renderWithProps(_props), 'h2'
-    //    );
+        expect(h2).to.exist;
+        expect(h2.textContent).to.match(/Sample Counter/);
+     });
 
-    //    expect(h2).to.exist;
-    //    expect(h2.textContent).to.match(/5$/);
-    // });
+     it('Should render props.counter at the end of the sample counter <h2>.', () => {
+        _props.counter = 5;
 
-    // describe('An increment button...', () => {
-    //    let _btn;
+        const h2 = TestUtils.findRenderedDOMComponentWithTag(
+            renderWithProps(_props), 'h2'
+        );
 
-    //    beforeEach(() => {
-    //        _btn = TestUtils.scryRenderedDOMComponentsWithTag(_rendered, 'button')
-    //            .filter((a: Element) => /Increment/.test(a.textContent))[0];
-    //    });
+        expect(h2).to.exist;
+        expect(h2.textContent).to.match(/5$/);
+     });
 
-    //    it('should be rendered.', () => {
-    //        expect(_btn).to.exist;
-    //    });
+     describe('An increment button...', () => {
+        let _btn;
 
-    //    it('should dispatch an action when clicked.', () => {
-    //        /* tslint:disable:no-unused-expression */
-    //        _spies.dispatch.should.have.not.been.called;
-    //        /* tslint:enable:no-unused-expression */
+        beforeEach(() => {
+            _btn = TestUtils.scryRenderedDOMComponentsWithTag(_rendered, 'button')
+                .filter((a: Element) => /Increment/.test(a.textContent))[0];
+        });
 
-    //        TestUtils.Simulate.click(_btn);
+        it('should be rendered.', () => {
+            expect(_btn).to.exist;
+        });
 
-    //        /* tslint:disable:no-unused-expression */
-    //        _spies.dispatch.should.have.been.called;
-    //        /* tslint:enable:no-unused-expression */
-    //    });
-    // });
+        it('should dispatch an action when clicked.', () => {
+            /* tslint:disable:no-unused-expression */
+            // _spies.dispatch.should.have.not.been.called;
+            _spies.increment.should.have.not.been.called;
+            /* tslint:enable:no-unused-expression */
 
-    // describe('A Double (Async) button...', () => {
-    //    let _btn;
+            TestUtils.Simulate.click(_btn);
 
-    //    beforeEach(() => {
-    //        _btn = TestUtils.scryRenderedDOMComponentsWithTag(_rendered, 'button')
-    //            .filter((a: Element) => /Double/.test(a.textContent))[0];
-    //    });
+            /* tslint:disable:no-unused-expression */
+            // _spies.dispatch.should.have.been.called;
+            _spies.increment.should.have.been.called;
+            /* tslint:enable:no-unused-expression */
+        });
+     });
 
-    //    it('should be rendered.', () => {
-    //        expect(_btn).to.exist;
-    //    });
+     describe('A Double (Async) button...', () => {
+        let _btn;
 
-    //    it('should dispatch an action when clicked.', () => {
-    //        /* tslint:disable:no-unused-expression */
-    //        _spies.dispatch.should.have.not.been.called;
-    //        /* tslint:enable:no-unused-expression */
+        beforeEach(() => {
+            _btn = TestUtils.scryRenderedDOMComponentsWithTag(_rendered, 'button')
+                .filter((a: Element) => /Double/.test(a.textContent))[0];
+        });
 
-    //        TestUtils.Simulate.click(_btn);
+        it('should be rendered.', () => {
+            expect(_btn).to.exist;
+        });
 
-    //        /* tslint:disable:no-unused-expression */
-    //        _spies.dispatch.should.have.been.called;
-    //        /* tslint:enable:no-unused-expression */
-    //    });
-    // });
+        it('should dispatch an action when clicked.', () => {
+            /* tslint:disable:no-unused-expression */
+            // _spies.dispatch.should.have.not.been.called;
+            _spies.doubleAsync.should.have.not.been.called;
+            /* tslint:enable:no-unused-expression */
+
+            TestUtils.Simulate.click(_btn);
+
+            /* tslint:disable:no-unused-expression */
+            // _spies.dispatch.should.have.been.called;
+            _spies.doubleAsync.should.have.been.called;
+            /* tslint:enable:no-unused-expression */
+        });
+     });
 });

@@ -2,8 +2,12 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { createHistory, useBasename } from 'history';
-import { syncReduxAndRouter } from 'redux-simple-router';
-import routes from './routes';
+
+// import { syncReduxAndRouter } from 'redux-simple-router';
+let reduxSimpleRouter: any = require('redux-simple-router');
+let syncReduxAndRouter = reduxSimpleRouter.syncReduxAndRouter;
+
+import routes from './routes/index';
 import Root from './containers/Root';
 import configureStore from './redux/configureStore';
 

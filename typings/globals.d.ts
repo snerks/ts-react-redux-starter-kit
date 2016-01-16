@@ -10,3 +10,10 @@ declare var NODE_ENV: string;
 interface Window {
     __INITIAL_STATE__: any;
 }
+
+declare var module: any;
+
+// redux-simple-router
+// declare function syncReduxAndRouter(history: any, store: any, selectRouterState: any): any;
+// declare function update(): any;
+

@@ -2,7 +2,7 @@
 import * as React from 'react';
 import * as TestUtils from 'react-addons-test-utils';
 import { bindActionCreators } from 'redux';
-import { HomeView } from '../../src/views/HomeView/HomeView';
+import { HomeView, mapStateToProps } from '../../src/views/HomeView/HomeView';
 import * as chai from 'chai';
 const expect = chai.expect;
 function shallowRender(component) {
@@ -107,5 +107,11 @@ describe('(View) Home', () => {
             _spies.dispatch.should.have.been.called;
             /* tslint:enable:no-unused-expression */
         });
+    });
+});
+describe('(View) Home.mapStateToProps', () => {
+    it('maps counter correctly', () => {
+        const result = mapStateToProps({ counter: 1 });
+        expect(result.counter).to.equal(1);
     });
 });

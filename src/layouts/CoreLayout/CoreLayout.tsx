@@ -25,6 +25,10 @@ export interface CoreLayoutProps extends React.Props<any> {
 }
 
 export class CoreLayout extends React.Component<CoreLayoutProps, {}> {
+    static propTypes: any = {
+        children: React.PropTypes.element
+    };
+
     render(): JSX.Element {
           return (
             <div className='page-container'>
@@ -35,9 +39,5 @@ export class CoreLayout extends React.Component<CoreLayoutProps, {}> {
         );
     }
 }
-
-// aCoreLayout.propTypes = {
-//  children: React.PropTypes.element
-// };
 
 export default CoreLayout;

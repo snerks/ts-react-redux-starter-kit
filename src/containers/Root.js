@@ -5,11 +5,6 @@ import { Router } from 'react-router';
 /* tslint:disable:no-unused-expression */
 React;
 export default class Root extends React.Component {
-    // static propTypes = {
-    //  history: React.PropTypes.object.isRequired,
-    //  routes: React.PropTypes.element.isRequired,
-    //  store: React.PropTypes.object.isRequired
-    // };
     get content() {
         return (React.createElement(Router, {"history": this.props.history}, this.props.routes));
     }
@@ -33,3 +28,8 @@ export default class Root extends React.Component {
         return (React.createElement(Provider, {"store": this.props.store}, React.createElement("div", {"style": { height: '100%' }}, this.content, this.devTools)));
     }
 }
+Root.propTypes = {
+    history: React.PropTypes.object.isRequired,
+    routes: React.PropTypes.element.isRequired,
+    store: React.PropTypes.object.isRequired
+};

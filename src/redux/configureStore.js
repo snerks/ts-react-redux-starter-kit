@@ -1,7 +1,9 @@
-import * as thunk from 'redux-thunk';
+// import * as thunk from 'redux-thunk';
+let thunk = require('redux-thunk');
 import rootReducer from './rootReducer';
 import { applyMiddleware, compose, createStore } from 'redux';
 export default function configureStore(initialState) {
+    'use strict';
     let createStoreWithMiddleware;
     const middleware = applyMiddleware(thunk);
     if (__DEBUG__) {

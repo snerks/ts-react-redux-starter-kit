@@ -15,11 +15,11 @@ export interface RootProps extends React.Props<any> {
 }
 
 export default class Root extends React.Component<RootProps, {}> {
-  // static propTypes = {
-  //  history: React.PropTypes.object.isRequired,
-  //  routes: React.PropTypes.element.isRequired,
-  //  store: React.PropTypes.object.isRequired
-  // };
+    static propTypes: any = {
+    history: React.PropTypes.object.isRequired,
+    routes: React.PropTypes.element.isRequired,
+    store: React.PropTypes.object.isRequired
+   };
 
   get content(): JSX.Element {
     return (

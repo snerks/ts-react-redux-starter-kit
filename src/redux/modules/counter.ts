@@ -35,5 +35,5 @@ export const actions: Redux.MapDispatchToPropsObject = {
 // Reducer
 // ------------------------------------
 export default handleActions({
-    [COUNTER_INCREMENT]: (state: any, { payload }: any) => state + payload
+    [COUNTER_INCREMENT]: (state: any, { payload }: any): any => state + payload
 }, 1);

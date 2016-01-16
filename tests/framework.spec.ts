@@ -7,7 +7,7 @@ const assert = chai.assert;
 const expect = chai.expect;
 const should = chai.should;
 
-describe('(Framework) Karma Plugins', () => {
+xdescribe('(Framework) Karma Plugins', () => {
     it('Should expose "expect" globally.', () => {
         assert.ok(expect);
     });
@@ -21,7 +21,7 @@ describe('(Framework) Karma Plugins', () => {
         // const fail = new Promise((res: any, rej: any) => rej());
 
         return Promise.all([
-            expect(pass).to.be.fulfilled,
+            expect(pass).to.be.fulfilled
             // expect(fail).to.not.be.fulfilled
         ]);
     });

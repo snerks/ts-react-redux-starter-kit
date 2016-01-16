@@ -1,4 +1,5 @@
-import * as thunk from 'redux-thunk';
+// import * as thunk from 'redux-thunk';
+let thunk = require('redux-thunk');
 import rootReducer from './rootReducer';
 import {
   applyMiddleware,
@@ -6,9 +7,11 @@ import {
   createStore
 } from 'redux';
 
-export default function configureStore (initialState) {
+export default function configureStore(initialState: any): any {
+    'use strict';
+
     let createStoreWithMiddleware;
-    const middleware = applyMiddleware(thunk);
+    const middleware = applyMiddleware(thunk as any);
 
   if (__DEBUG__) {
     createStoreWithMiddleware = compose(
@@ -24,6 +27,7 @@ export default function configureStore (initialState) {
   const store = createStoreWithMiddleware(createStore)(
     rootReducer, initialState
   );
+
   if (module.hot) {
     module.hot.accept('./rootReducer', () => {
       const nextRootReducer = require<any>('./rootReducer').default;
