@@ -1,3 +1,5 @@
+/// <reference path="../../typings/tsd.d.ts" />
+/// <reference path="../../src/layouts/corelayout/corelayout.tsx" />
 import * as React from 'react';
 import * as TestUtils from 'react-addons-test-utils';
 import { CoreLayout } from '../../src/layouts/CoreLayout/CoreLayout';

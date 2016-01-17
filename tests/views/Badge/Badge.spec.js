@@ -1,3 +1,4 @@
+/// <reference path="../../../typings/tsd.d.ts" />
 import * as React from 'react';
 import * as TestUtils from 'react-addons-test-utils';
 import { Badge } from '../../../src/views/Badge/Badge';
@@ -28,11 +29,25 @@ describe('(View) Badge', () => {
             doubleAsync: sinon.spy(),
             increment: sinon.spy()
         };
+        // const actionCreators: BadgeProps = {
+        //   counter: 0,
+        //   doubleAsync: _spies.doubleAsync,
+        //   increment: _spies.increment
+        // };
+        // const boundActionCreators = bindActionCreators(actionCreators, _spies.dispatch);
         _props = {
             counter: 0,
             doubleAsync: _spies.doubleAsync,
+            // increment: boundActionCreators.increment
             increment: _spies.increment
         };
+        // _props = {
+        //  counter: 0,
+        //  ...bindActionCreators({
+        //    doubleAsync: (_spies.doubleAsync = sinon.spy()),
+        //    increment: (_spies.increment = sinon.spy())
+        //  }, _spies.dispatch = sinon.spy())
+        // };
         _component = shallowRenderWithProps(_props);
         _rendered = renderWithProps(_props);
     });
@@ -68,9 +83,15 @@ describe('(View) Badge', () => {
             expect(_btn).to.exist;
         });
         it('should dispatch an action when clicked.', () => {
+            /* tslint:disable:no-unused-expression */
+            // _spies.dispatch.should.have.not.been.called;
             _spies.increment.should.have.not.been.called;
+            /* tslint:enable:no-unused-expression */
             TestUtils.Simulate.click(_btn);
+            /* tslint:disable:no-unused-expression */
+            // _spies.dispatch.should.have.been.called;
             _spies.increment.should.have.been.called;
+            /* tslint:enable:no-unused-expression */
         });
     });
     describe('A Double (Async) button...', () => {
@@ -83,9 +104,15 @@ describe('(View) Badge', () => {
             expect(_btn).to.exist;
         });
         it('should dispatch an action when clicked.', () => {
+            /* tslint:disable:no-unused-expression */
+            // _spies.dispatch.should.have.not.been.called;
             _spies.doubleAsync.should.have.not.been.called;
+            /* tslint:enable:no-unused-expression */
             TestUtils.Simulate.click(_btn);
+            /* tslint:disable:no-unused-expression */
+            // _spies.dispatch.should.have.been.called;
             _spies.doubleAsync.should.have.been.called;
+            /* tslint:enable:no-unused-expression */
         });
     });
 });

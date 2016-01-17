@@ -1,5 +1,8 @@
+/// <reference path="../../typings/tsd.d.ts" />
+/// <reference path="../layouts/corelayout/corelayout.tsx" />
 import * as React from 'react';
 import { Route, IndexRoute, Redirect } from 'react-router';
+/* tslint:disable:no-unused-expression */
 React;
 import CoreLayout from '../layouts/CoreLayout/CoreLayout';
 import HomeView from '../views/HomeView/HomeView';

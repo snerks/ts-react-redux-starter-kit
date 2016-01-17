@@ -12,7 +12,8 @@
         "jsx": true,
         "spread": true,
         "destructuring": true,
-        "restParams": true
+        "restParams": true,
+        "experimentalObjectRestSpread ": true
     },
     "globals": {
         "__DEV__": false,

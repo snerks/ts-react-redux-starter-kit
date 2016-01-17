@@ -21,7 +21,10 @@ const karmaConfig = {
   preprocessors: {
     [`${config.dir_test}/**/*.js`]: ['webpack']
   },
+
   reporters: ['spec'],
+  colors : true,
+
   browsers: ['PhantomJS'],
   webpack: {
     devtool: 'inline-source-map',
